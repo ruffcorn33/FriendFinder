@@ -36,11 +36,12 @@
     <hr>
 
     <h3><strong>Question 1</strong></h3>
-    <h4>To repair a port side airlock release mechanism, I will need...</h4>
+    <h4>The onboard computer has just picked up a fault in the AE-35 unit. I will need...</h4>
     <form>
         <label class="radio-inline">
-          <h4><input value = '5' type="radio" name = 'q1'>A left-handed A6 spanner with adjustable fimbrel   -- OR -- </h4>
+          <h4><input value = '5' type="radio" name = 'q1'>A left-handed A6 spanner with adjustable fimbrel</h4>
         </label>
+        <br>
         <label class="radio-inline">
           <h4><input value = '1' type="radio" name = 'q1'>A gender-neutral bearing shifter with detachable sprocket attachment</h4>
         </label>
@@ -52,6 +53,7 @@
       <label class="radio-inline">
         <h4><input value = '5' type="radio" name = 'q2'>Star Wars</h4>
       </label>
+      <br>
       <label class="radio-inline">
         <h4><input value = '1' type="radio" name = 'q2'>Star Trek</h4>
       </label>
@@ -69,13 +71,14 @@
     </select>
 
     <h3><strong>Question 4</strong></h3>
-    <h4>Pick one</h4>
+    <h4>Green Day is a punk band</h4>
     <form>
       <label class="radio-inline">
-        <h4><input value = '5' type="radio" name = 'q4'>Boxers</h4>
+        <h4><input value = '5' type="radio" name = 'q4'>Yes</h4>
       </label>
+      <br>
       <label class="radio-inline">
-        <h4><input value = '1' type="radio" name = 'q4'>Briefs</h4>
+        <h4><input value = '1' type="radio" name = 'q4'>No</h4>
       </label>
     </form>
 
@@ -83,12 +86,16 @@
     <h4>Check all that apply</h4>
     <form>
       <div class='form-check'>
-        <input type="checkbox" class='form-check-input' id='LI' value=5>
-        <label for="LI" class="form-check-label">Lactose Intolerance</label><br>
-        <input type="checkbox" class='form-check-input' id='IB' value=5>
-        <label for="IB" class="form-check-label">Irritable Bowel Syndrome</label><br>
-        <input type="checkbox" class='form-check-input' id='BrI' value=5>
-        <label for="BrI" class="form-check-label">Brassica Intolerance</label><br>
+        <input type="checkbox" class='form-check-input' name='q5' value=1>
+        <label for="LI" class="form-check-label">Lactose Intolerant</label><br>
+        <input type="checkbox" class='form-check-input' name='q5' value=1>
+        <label for="BrI" class="form-check-label">Snoring</label><br>
+        <input type="checkbox" class='form-check-input' name='q5' value=1>
+        <label for="IB" class="form-check-label">Says 'orientate' or 'ekcetera'</label><br>
+        <input type="checkbox" class='form-check-input' name='q5' value=1>
+        <label for="BrI" class="form-check-label">Pun Master</label><br>
+        <input type="checkbox" class='form-check-input' name='q5' value=1>
+        <label for="BrI" class="form-check-label">Air Drumming</label><br>
       </div>
     </form>
 
@@ -98,7 +105,7 @@
       <option value=""></option>
       <option value="1">Rehydrate a new pot</option>
       <option value="2">Offer the last cup to your crewmate</option>
-      <option value="3">Leave a tablesppon of coffee in the pot so you can say 'It's NOT empty'.</option>
+      <option value="3">Leave a tablespoon of coffee in the pot so you can say 'It's NOT empty'.</option>
       <option value="4">Pretend you don't know how to rehydrate coffee.  Again.</option>
       <option value="5">Claim you don't even drink coffee</option>
     </select>
@@ -115,11 +122,12 @@
     </select>
 
     <h3><strong>Question 8</strong></h3>
-    <h4>If you could have sex with any crewmate living or dead whould you choose...</h4>
+    <h4>If you could have sex with any crewmate living or dead would you choose...</h4>
     <form>
       <label class="radio-inline">
         <h4><input value = '5' type="radio" name = 'q8'>Living</h4>
       </label>
+      <br>
       <label class="radio-inline">
         <h4><input value = '1' type="radio" name = 'q8'>Dead</h4>
       </label>
@@ -142,6 +150,7 @@
       <label class="radio-inline">
         <h4><input value = '5' type="radio" name = 'q10'>Portal 2</h4>
       </label>
+      <br>
       <label class="radio-inline">
         <h4><input value = '1' type="radio" name = 'q10'>Something stupid</h4>
       </label>
@@ -186,6 +195,13 @@
   </div>
 
   <script type="text/javascript">
+    var peeves;
+    for(i=0; i<document.forms.length; i++){
+      if(document.forms[i].checked ){
+        peeves++;
+      }
+    }
+
   $.ajaxSettings.traditional = true;
     // Chosen CSS
     var config = {
@@ -237,11 +253,11 @@
           name: $("#name").val(),
           photo: $("#photo").val(),
           scores: [
-            // $("#q1").val(),
-            // $("#q2").val(),
-            // $("#q3").val(),
-            // $("#q4").val(),
-            // $("#q5").val(),
+            $("input[type='radio'][name='q1']:checked").val(),            
+            $("input[type='radio'][name='q2']:checked").val(),
+            $("#q3").val(),
+            $("input[type='radio'][name='q4']:checked").val(),            
+            peeves,
             $("#q6").val(),
             $("#q7").val(),
             $("input[type='radio'][name='q8']:checked").val(),
@@ -252,6 +268,7 @@
 
         // AJAX post the data to the friends API.s
         $.post("/api/friends", userData, function(data) {
+          console.log(data.photo);
 
           // Grab the result from the AJAX post so that the best match's name and photo are displayed.
           $("#match-name").text(data.name);
