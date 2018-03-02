@@ -83,21 +83,15 @@
     </form>
 
     <h3><strong>Question 5</strong></h3>
-    <h4>Check all that apply</h4>
-    <form>
-      <div class='form-check'>
-        <input type="checkbox" class='form-check-input' name='q5' value=1>
-        <label for="LI" class="form-check-label">Lactose Intolerant</label><br>
-        <input type="checkbox" class='form-check-input' name='q5' value=1>
-        <label for="BrI" class="form-check-label">Snoring</label><br>
-        <input type="checkbox" class='form-check-input' name='q5' value=1>
-        <label for="IB" class="form-check-label">Says 'orientate' or 'ekcetera'</label><br>
-        <input type="checkbox" class='form-check-input' name='q5' value=1>
-        <label for="BrI" class="form-check-label">Pun Master</label><br>
-        <input type="checkbox" class='form-check-input' name='q5' value=1>
-        <label for="BrI" class="form-check-label">Air Drumming</label><br>
-      </div>
-    </form>
+    <h4>When you stare into the abyss...</h4>
+    <select class="chosen-select" id="q6">
+      <option value=""></option>
+      <option value="1">The abyss stares back at you</option>
+      <option value="2">The abyss thinks you are kind of creepy</option>
+      <option value="3">The abyss assumes you are looking at the abyss behind him</option>
+      <option value="4">The abyss does this:  ¯\_(ツ)_/¯</option>
+      <option value="5">The abyss moves to a different coffeeshop</option>
+    </select>
 
     <h3><strong>Question 6</strong></h3>
     <h4>You take the last bulb of coffee in the galley.  Do you...</h4>
@@ -184,7 +178,7 @@
         </div>
         <div class="modal-body">
           <h2 id="match-name"></h2>
-          <img id="match-img" src="http://wallpaper-gallery.net/images/best-friend-images/best-friend-images-3.jpg" height=100 width=150 alt="">
+          <img id="match-img" src="http://wallpaper-gallery.net/images/best-friend-images/best-friend-images-3.jpg" height=100 widt=150 alt="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -256,7 +250,7 @@
             $("input[type='radio'][name='q2']:checked").val(),
             $("#q3").val(),
             $("input[type='radio'][name='q4']:checked").val(),            
-            peeves,
+            $("#q5").val(),
             $("#q6").val(),
             $("#q7").val(),
             $("input[type='radio'][name='q8']:checked").val(),
