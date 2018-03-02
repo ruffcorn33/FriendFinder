@@ -16,7 +16,7 @@ var friends = [
   },
   {
     "name":"Carrie",
-    "photo":"hhttps://vignette4.wikia.nocookie.net/p__/images/a/a8/Princess_Leia_Large_Gun_Close.jpg/revision/latest?cb=20120115141843&path-prefix=protagonist",
+    "photo":"https://vignette4.wikia.nocookie.net/p__/images/a/a8/Princess_Leia_Large_Gun_Close.jpg/revision/latest?cb=20120115141843&path-prefix=protagonist",
     "scores":[1, 5, 3, 3, 1, 5, 1, 1, 3, 1]
   },
   {
